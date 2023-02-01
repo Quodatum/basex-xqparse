@@ -1,0 +1,953 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <title>Parser railroad</title>
+  <style>html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin:0;
+  display: flex;
+}
+
+.Content {
+  flex-grow: 1;
+}
+
+.Sidebar {
+  width: 200px;
+  flex-shrink: 0;
+}</style>
+  <body>
+    <nav class="Sidebar" style="background:rgb(235, 236, 236)">Sidebar<ul id="names">
+        <li>
+          <a href="BaseX.xhtml#XQuery" target="parser">XQuery</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Module" target="parser">Module</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#VersionDecl" target="parser">VersionDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MainModule" target="parser">MainModule</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#LibraryModule" target="parser">LibraryModule</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ModuleDecl" target="parser">ModuleDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Prolog" target="parser">Prolog</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Setter" target="parser">Setter</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#BoundarySpaceDecl" target="parser">BoundarySpaceDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DefaultCollationDecl" target="parser">DefaultCollationDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#BaseURIDecl" target="parser">BaseURIDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ConstructionDecl" target="parser">ConstructionDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrderingModeDecl" target="parser">OrderingModeDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#EmptyOrderDecl" target="parser">EmptyOrderDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CopyNamespacesDecl" target="parser">CopyNamespacesDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PreserveMode" target="parser">PreserveMode</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#InheritMode" target="parser">InheritMode</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DecimalFormatDecl" target="parser">DecimalFormatDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DFPropertyName" target="parser">DFPropertyName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Import" target="parser">Import</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SchemaImport" target="parser">SchemaImport</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SchemaPrefix" target="parser">SchemaPrefix</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ModuleImport" target="parser">ModuleImport</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NamespaceDecl" target="parser">NamespaceDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DefaultNamespaceDecl" target="parser">DefaultNamespaceDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTOptionDecl" target="parser">FTOptionDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AnnotatedDecl" target="parser">AnnotatedDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Annotation" target="parser">Annotation</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#VarDecl" target="parser">VarDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#VarValue" target="parser">VarValue</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#VarDefaultValue" target="parser">VarDefaultValue</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ContextItemDecl" target="parser">ContextItemDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionDecl" target="parser">FunctionDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ParamList" target="parser">ParamList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Param" target="parser">Param</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionBody" target="parser">FunctionBody</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#EnclosedExpr" target="parser">EnclosedExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OptionDecl" target="parser">OptionDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FLWORExpr" target="parser">FLWORExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#InitialClause" target="parser">InitialClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#IntermediateClause" target="parser">IntermediateClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ForClause" target="parser">ForClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ForBinding" target="parser">ForBinding</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AllowingEmpty" target="parser">AllowingEmpty</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PositionalVar" target="parser">PositionalVar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTScoreVar" target="parser">FTScoreVar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#LetClause" target="parser">LetClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#LetBinding" target="parser">LetBinding</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#WindowClause" target="parser">WindowClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TumblingWindowClause" target="parser">TumblingWindowClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SlidingWindowClause" target="parser">SlidingWindowClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#WindowStartCondition" target="parser">WindowStartCondition</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#WindowEndCondition" target="parser">WindowEndCondition</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#WindowVars" target="parser">WindowVars</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CurrentItem" target="parser">CurrentItem</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PreviousItem" target="parser">PreviousItem</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NextItem" target="parser">NextItem</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CountClause" target="parser">CountClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#WhereClause" target="parser">WhereClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#GroupByClause" target="parser">GroupByClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#GroupingSpecList" target="parser">GroupingSpecList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#GroupingSpec" target="parser">GroupingSpec</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#GroupingVariable" target="parser">GroupingVariable</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrderByClause" target="parser">OrderByClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrderSpecList" target="parser">OrderSpecList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrderSpec" target="parser">OrderSpec</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrderModifier" target="parser">OrderModifier</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ReturnClause" target="parser">ReturnClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QuantifiedExpr" target="parser">QuantifiedExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QuantifiedVarDecl" target="parser">QuantifiedVarDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SwitchExpr" target="parser">SwitchExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SwitchCaseClause" target="parser">SwitchCaseClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SwitchCaseOperand" target="parser">SwitchCaseOperand</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TypeswitchExpr" target="parser">TypeswitchExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CaseClause" target="parser">CaseClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SequenceTypeUnion" target="parser">SequenceTypeUnion</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#IfExpr" target="parser">IfExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#BasexIfExpr" target="parser">BasexIfExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TryCatchExpr" target="parser">TryCatchExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TryClause" target="parser">TryClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#EnclosedTryTargetExpr" target="parser">EnclosedTryTargetExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CatchClause" target="parser">CatchClause</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CatchErrorList" target="parser">CatchErrorList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrExpr" target="parser">OrExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AndExpr" target="parser">AndExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ComparisonExpr" target="parser">ComparisonExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTContainsExpr" target="parser">FTContainsExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StringConcatExpr" target="parser">StringConcatExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#RangeExpr" target="parser">RangeExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AdditiveExpr" target="parser">AdditiveExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MultiplicativeExpr" target="parser">MultiplicativeExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#UnionExpr" target="parser">UnionExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#IntersectExceptExpr" target="parser">IntersectExceptExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#InstanceofExpr" target="parser">InstanceofExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TreatExpr" target="parser">TreatExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CastableExpr" target="parser">CastableExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CastExpr" target="parser">CastExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TransformWithExpr" target="parser">TransformWithExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#BasexUpdate1Expr" target="parser">BasexUpdate1Expr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#BasexUpdateExpr" target="parser">BasexUpdateExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ArrowExpr" target="parser">ArrowExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#UnaryExpr" target="parser">UnaryExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ValueExpr" target="parser">ValueExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SimpleMapExpr" target="parser">SimpleMapExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#GeneralComp" target="parser">GeneralComp</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ValueComp" target="parser">ValueComp</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NodeComp" target="parser">NodeComp</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ValidateExpr" target="parser">ValidateExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ValidationMode" target="parser">ValidationMode</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ExtensionExpr" target="parser">ExtensionExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Pragma" target="parser">Pragma</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PathExpr" target="parser">PathExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#RelativePathExpr" target="parser">RelativePathExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StepExpr" target="parser">StepExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AxisStep" target="parser">AxisStep</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ForwardStep" target="parser">ForwardStep</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ForwardAxis" target="parser">ForwardAxis</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AbbrevForwardStep" target="parser">AbbrevForwardStep</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ReverseStep" target="parser">ReverseStep</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ReverseAxis" target="parser">ReverseAxis</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NodeTest" target="parser">NodeTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NameTest" target="parser">NameTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PostfixExpr" target="parser">PostfixExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ArgumentList" target="parser">ArgumentList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PredicateList" target="parser">PredicateList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Predicate" target="parser">Predicate</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Lookup" target="parser">Lookup</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#UnaryLookup" target="parser">UnaryLookup</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#KeySpecifier" target="parser">KeySpecifier</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ArrowFunctionSpecifier" target="parser">ArrowFunctionSpecifier</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Literal" target="parser">Literal</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NumericLiteral" target="parser">NumericLiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#VarRef" target="parser">VarRef</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#VarName" target="parser">VarName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ParenthesizedExpr" target="parser">ParenthesizedExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OrderedExpr" target="parser">OrderedExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#UnorderedExpr" target="parser">UnorderedExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionCall" target="parser">FunctionCall</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Argument" target="parser">Argument</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Constructor" target="parser">Constructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirectConstructor" target="parser">DirectConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirElemConstructor" target="parser">DirElemConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirAttributeList" target="parser">DirAttributeList</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirAttributeValue" target="parser">DirAttributeValue</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QuotAttrValueContent" target="parser">QuotAttrValueContent</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AposAttrValueContent" target="parser">AposAttrValueContent</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirElemContent" target="parser">DirElemContent</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirCommentConstructor" target="parser">DirCommentConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirPIConstructor" target="parser">DirPIConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CDataSection" target="parser">CDataSection</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ComputedConstructor" target="parser">ComputedConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompElemConstructor" target="parser">CompElemConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#EnclosedContentExpr" target="parser">EnclosedContentExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompNamespaceConstructor" target="parser">CompNamespaceConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Prefix" target="parser">Prefix</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PrefixExpr" target="parser">PrefixExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#URIExpr" target="parser">URIExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionItemExpr" target="parser">FunctionItemExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NamedFunctionRef" target="parser">NamedFunctionRef</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#InlineFunctionExpr" target="parser">InlineFunctionExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MapConstructor" target="parser">MapConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MapConstructorEntry" target="parser">MapConstructorEntry</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MapKeyExpr" target="parser">MapKeyExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MapValueExpr" target="parser">MapValueExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ArrayConstructor" target="parser">ArrayConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SquareArrayConstructor" target="parser">SquareArrayConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CurlyArrayConstructor" target="parser">CurlyArrayConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StringConstructor" target="parser">StringConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StringConstructorContent" target="parser">StringConstructorContent</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StringConstructorInterpolation" target="parser">StringConstructorInterpolation</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SingleType" target="parser">SingleType</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TypeDeclaration" target="parser">TypeDeclaration</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SequenceType" target="parser">SequenceType</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ItemType" target="parser">ItemType</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#OccurrenceIndicator" target="parser">OccurrenceIndicator</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AtomicOrUnionType" target="parser">AtomicOrUnionType</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#KindTest" target="parser">KindTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AnyKindTest" target="parser">AnyKindTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DocumentTest" target="parser">DocumentTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TextTest" target="parser">TextTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CommentTest" target="parser">CommentTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NamespaceNodeTest" target="parser">NamespaceNodeTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PITest" target="parser">PITest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AttributeTest" target="parser">AttributeTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AttribNameOrWildcard" target="parser">AttribNameOrWildcard</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SchemaAttributeTest" target="parser">SchemaAttributeTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AttributeDeclaration" target="parser">AttributeDeclaration</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ElementTest" target="parser">ElementTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ElementNameOrWildcard" target="parser">ElementNameOrWildcard</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SchemaElementTest" target="parser">SchemaElementTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ElementDeclaration" target="parser">ElementDeclaration</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AttributeName" target="parser">AttributeName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ElementName" target="parser">ElementName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SimpleTypeName" target="parser">SimpleTypeName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TypeName" target="parser">TypeName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionTest" target="parser">FunctionTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AnyFunctionTest" target="parser">AnyFunctionTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TypedFunctionTest" target="parser">TypedFunctionTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#MapTest" target="parser">MapTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AnyMapTest" target="parser">AnyMapTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TypedMapTest" target="parser">TypedMapTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ArrayTest" target="parser">ArrayTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AnyArrayTest" target="parser">AnyArrayTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TypedArrayTest" target="parser">TypedArrayTest</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ParenthesizedItemType" target="parser">ParenthesizedItemType</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#URILiteral" target="parser">URILiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#EQName" target="parser">EQName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionEQName" target="parser">FunctionEQName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QName" target="parser">QName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FunctionName" target="parser">FunctionName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#RevalidationDecl" target="parser">RevalidationDecl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#InsertExprTargetChoice" target="parser">InsertExprTargetChoice</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#InsertExpr" target="parser">InsertExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DeleteExpr" target="parser">DeleteExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ReplaceExpr" target="parser">ReplaceExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#RenameExpr" target="parser">RenameExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#SourceExpr" target="parser">SourceExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#TargetExpr" target="parser">TargetExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NewNameExpr" target="parser">NewNameExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#UpdatingFunctionCall" target="parser">UpdatingFunctionCall</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CopyModifyExpr" target="parser">CopyModifyExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CopyModifySpec" target="parser">CopyModifySpec</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTSelection" target="parser">FTSelection</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTWeight" target="parser">FTWeight</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTOr" target="parser">FTOr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTAnd" target="parser">FTAnd</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTMildNot" target="parser">FTMildNot</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTUnaryNot" target="parser">FTUnaryNot</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTPrimaryWithOptions" target="parser">FTPrimaryWithOptions</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTPrimary" target="parser">FTPrimary</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTWords" target="parser">FTWords</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTWordsValue" target="parser">FTWordsValue</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTExtensionSelection" target="parser">FTExtensionSelection</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTAnyallOption" target="parser">FTAnyallOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTTimes" target="parser">FTTimes</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTRange" target="parser">FTRange</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTPosFilter" target="parser">FTPosFilter</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTWindow" target="parser">FTWindow</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTDistance" target="parser">FTDistance</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTUnit" target="parser">FTUnit</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTScope" target="parser">FTScope</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTBigUnit" target="parser">FTBigUnit</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTContent" target="parser">FTContent</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTMatchOptions" target="parser">FTMatchOptions</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTMatchOption" target="parser">FTMatchOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTCaseOption" target="parser">FTCaseOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTDiacriticsOption" target="parser">FTDiacriticsOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTStemOption" target="parser">FTStemOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTThesaurusOption" target="parser">FTThesaurusOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTThesaurusID" target="parser">FTThesaurusID</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTLiteralRange" target="parser">FTLiteralRange</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTStopWordOption" target="parser">FTStopWordOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTStopWords" target="parser">FTStopWords</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTStopWordsInclExcl" target="parser">FTStopWordsInclExcl</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTLanguageOption" target="parser">FTLanguageOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTWildCardOption" target="parser">FTWildCardOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTExtensionOption" target="parser">FTExtensionOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#FTIgnoreOption" target="parser">FTIgnoreOption</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Comment" target="parser">Comment</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Whitespace" target="parser">Whitespace</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NCName" target="parser">NCName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QueryBody" target="parser">QueryBody</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Expr" target="parser">Expr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ExprSingle" target="parser">ExprSingle</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CommonContent" target="parser">CommonContent</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompDocConstructor" target="parser">CompDocConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompAttrConstructor" target="parser">CompAttrConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompPIConstructor" target="parser">CompPIConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompCommentConstructor" target="parser">CompCommentConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CompTextConstructor" target="parser">CompTextConstructor</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PrimaryExpr" target="parser">PrimaryExpr</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#IntegerLiteral" target="parser">IntegerLiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DecimalLiteral" target="parser">DecimalLiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DoubleLiteral" target="parser">DoubleLiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StringLiteral" target="parser">StringLiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#URIQualifiedName" target="parser">URIQualifiedName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#BracedURILiteral" target="parser">BracedURILiteral</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PredefinedEntityRef" target="parser">PredefinedEntityRef</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#ElementContentChar" target="parser">ElementContentChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QuotAttrContentChar" target="parser">QuotAttrContentChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#AposAttrContentChar" target="parser">AposAttrContentChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PITarget" target="parser">PITarget</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NameStartChar" target="parser">NameStartChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NameChar" target="parser">NameChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Name" target="parser">Name</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CharRef" target="parser">CharRef</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NCName" target="parser">NCName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#QName" target="parser">QName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PrefixedName" target="parser">PrefixedName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#UnprefixedName" target="parser">UnprefixedName</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Prefix" target="parser">Prefix</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#LocalPart" target="parser">LocalPart</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#StringConstructorChars" target="parser">StringConstructorChars</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#S" target="parser">S</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Char" target="parser">Char</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Digits" target="parser">Digits</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CommentContents" target="parser">CommentContents</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#PragmaContents" target="parser">PragmaContents</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Wildcard" target="parser">Wildcard</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirCommentContents" target="parser">DirCommentContents</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DirPIContents" target="parser">DirPIContents</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#CDataSectionContents" target="parser">CDataSectionContents</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#EOF" target="parser">EOF</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#NonNCNameChar" target="parser">NonNCNameChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#DelimitingChar" target="parser">DelimitingChar</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Railroad-Diagram-Generator" target="parser">Railroad-Diagram-Generator</a>
+        </li>
+        <li>
+          <a href="BaseX.xhtml#Railroad-Diagram-Generator" target="parser">Railroad-Diagram-Generator</a>
+        </li>
+      </ul>
+    </nav>
+    <iframe id="parser" class="Content" name="parser" src="BaseX.xhtml">??</iframe>
+    <script>window.addEventListener("hashchange", function () {
+       var hash=window.location.hash.substring(2);
+       alert(hash);
+        document.getElementById('parser').getElementById(hash).scrollIntoView();
+    });</script>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <title>Parser railroad</title>
+  <style>html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin:0;
+  display: flex;
+}
+
+.Content {
+  flex-grow: 1;
+}
+
+.Sidebar {
+  width: 200px;
+  flex-shrink: 0;
+}</style>
+  <body>
+    <nav class="Sidebar" style="background:rgb(235, 236, 236)">Sidebar<ul id="names">
+        <li>
+          <a href="XQueryTokenizer.xhtml#start" target="parser">start</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#StartTag" target="parser">StartTag</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#TagContent" target="parser">TagContent</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#AposAttr" target="parser">AposAttr</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#QuotAttr" target="parser">QuotAttr</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#CData" target="parser">CData</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#XMLComment" target="parser">XMLComment</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#PI" target="parser">PI</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Pragma" target="parser">Pragma</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Comment" target="parser">Comment</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#CommentDoc" target="parser">CommentDoc</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#QuotString" target="parser">QuotString</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#AposString" target="parser">AposString</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Prefix" target="parser">Prefix</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#_EQName" target="parser">_EQName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Whitespace" target="parser">Whitespace</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#EQName" target="parser">EQName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#FunctionName" target="parser">FunctionName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#NCName" target="parser">NCName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#ModuleDecl" target="parser">ModuleDecl</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Annotation" target="parser">Annotation</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#OptionDecl" target="parser">OptionDecl</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Operator" target="parser">Operator</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Variable" target="parser">Variable</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Tag" target="parser">Tag</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#EndTag" target="parser">EndTag</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#PragmaContents" target="parser">PragmaContents</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DirCommentContents" target="parser">DirCommentContents</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DirPIContents" target="parser">DirPIContents</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#CDataSectionContents" target="parser">CDataSectionContents</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#AttrTest" target="parser">AttrTest</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Wildcard" target="parser">Wildcard</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#EQName" target="parser">EQName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#URIQualifiedName" target="parser">URIQualifiedName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#BracedURILiteral" target="parser">BracedURILiteral</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#URILiteral" target="parser">URILiteral</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#IntegerLiteral" target="parser">IntegerLiteral</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DecimalLiteral" target="parser">DecimalLiteral</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DoubleLiteral" target="parser">DoubleLiteral</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#PredefinedEntityRef" target="parser">PredefinedEntityRef</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#QuotChar" target="parser">QuotChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#AposChar" target="parser">AposChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#ElementContentChar" target="parser">ElementContentChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#QuotAttrContentChar" target="parser">QuotAttrContentChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#AposAttrContentChar" target="parser">AposAttrContentChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#PITarget" target="parser">PITarget</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Name" target="parser">Name</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#NameStartChar" target="parser">NameStartChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#NameChar" target="parser">NameChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#NCName" target="parser">NCName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Char" target="parser">Char</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#QName" target="parser">QName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#PrefixedName" target="parser">PrefixedName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#UnprefixedName" target="parser">UnprefixedName</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Prefix" target="parser">Prefix</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#LocalPart" target="parser">LocalPart</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#S" target="parser">S</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#CharRef" target="parser">CharRef</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Digits" target="parser">Digits</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#CommentContents" target="parser">CommentContents</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DocTag" target="parser">DocTag</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DocCommentContents" target="parser">DocCommentContents</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#EOF" target="parser">EOF</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#NonNCNameChar" target="parser">NonNCNameChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#DelimitingChar" target="parser">DelimitingChar</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Railroad-Diagram-Generator" target="parser">Railroad-Diagram-Generator</a>
+        </li>
+        <li>
+          <a href="XQueryTokenizer.xhtml#Railroad-Diagram-Generator" target="parser">Railroad-Diagram-Generator</a>
+        </li>
+      </ul>
+    </nav>
+    <iframe id="parser" class="Content" name="parser" src="XQueryTokenizer.xhtml">??</iframe>
+    <script>window.addEventListener("hashchange", function () {
+       var hash=window.location.hash.substring(2);
+       alert(hash);
+        document.getElementById('parser').getElementById(hash).scrollIntoView();
+    });</script>
+  </body>
+</html>
