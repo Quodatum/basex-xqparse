@@ -17,10 +17,11 @@ body {
 .Sidebar {
   width: 200px;
   flex-shrink: 0;
+  overflow: scroll;
 }</style>
   <body>
-    <nav class="Sidebar" style="background:rgb(235, 236, 236)">Sidebar<ul id="names">
-      
+    <nav class="Sidebar" style="background:rgb(235, 236, 236)"><h2 id="title">Productions</h2>
+      <ul id="names">
       </ul>
     </nav>
     <iframe  id="parser" class="Content" name="parser" src="xx.xhtml">??</iframe>
