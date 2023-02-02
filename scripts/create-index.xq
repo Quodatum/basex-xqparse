@@ -11,6 +11,7 @@ declare function local:create-index($file as xs:string){
       let $index-url:=("i-" || $file)=>resolve-uri($SITE)
       let $names:= $xhtml//xhtml:p/xhtml:a/@name/string()
       let $index:=doc("i-frame.tpl") transform with {
+                        replace value of node  xhtml:html/xhtml:title with substring-before($file,".") || " EBNF",
                         replace value of node  id("title") with substring-before($file,"."),
                         replace value of node  id("parser")/@src with $file,
                         replace node id("names") with 
