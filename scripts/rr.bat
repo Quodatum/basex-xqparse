@@ -1,0 +1,1 @@
+java -jar "C:\Users\mrwhe\apps\apache-tomcat-9.0.86\webapps\rr.war" ..\ebnf\BaseX.ebnf

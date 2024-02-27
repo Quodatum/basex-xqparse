@@ -1,0 +1,8 @@
+{
+  "author": {"name": "Andy Bunce"},
+  "name": "basex-xqparse", 
+  "version": "0.1.0",
+  "scripts": {
+    "abc": "echo hello"
+  } 
+}
