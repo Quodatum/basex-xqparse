@@ -1,26 +1,38 @@
-<!-- enrich rr output -->
+<!-- enrich rr  https://github.com/GuntherRademacher/rroutput
+     @author Andy Bunce, Quodatum
+     @license Apache 2
+-->
 <xsl:stylesheet version="3.0" 
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xhtml="http://www.w3.org/1999/xhtml"> 
+                xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                xmlns:svg="http://www.w3.org/2000/svg"> 
     <xsl:output method="html" version="5"/> 
     <xsl:mode on-no-match="shallow-copy"/>
     <xsl:variable name="names"  select="/xhtml:html/xhtml:body/xhtml:p/xhtml:a/@name/string()=>sort()"  />
     
     
     <xsl:template match="xhtml:body" >
-        <xhtml:body>
+        <xsl:copy>
             <xhtml:main>
                 <xhtml:div>
                     <xsl:apply-templates />
                 </xhtml:div>
                 <xsl:call-template name="toc"/>
-            </xhtml:main>
-            
-        </xhtml:body>
+            </xhtml:main> 
+        </xsl:copy>
     </xsl:template>
     
+    <!-- hide 1st empty svg (rr bug?) -->
+    <xsl:template match="svg:svg[1]" >
+        <xsl:copy>
+            <xsl:attribute name="display" select="'none'"/>
+            <xsl:apply-templates />
+        </xsl:copy>
+    </xsl:template>
+
+    <!-- add extra styles -->
     <xsl:template match="xhtml:head/xhtml:style[@type='text/css'][1]" >
-        <xhtml:style type="text/css">
+        <xsl:copy>
             html {
             scroll-behavior: smooth;
             }
@@ -47,16 +59,16 @@
             #the-list li:hover { background: #fffed6; }
             #the-list li.hide { display: none; }
             <xsl:value-of select="."/>
-        </xhtml:style>
+        </xsl:copy>
     </xsl:template>
     
+    <!-- insert toc  -->
     <xsl:template name="toc" >
-        <xhtml:nav class="section-nav">
-            
+        <xhtml:nav class="section-nav">         
             <xhtml:label for="name">Productions:</xhtml:label>
             <xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5"/>
-            <xhtml:a href="#" title="Clear" onclick="document.getElementById('the-filter').value='';
-                                                     filter.onkeyup();"
+            <xhtml:a href="#" title="Clear" 
+                     onclick="document.getElementById('the-filter').value='';update();"
                 >X</xhtml:a>
             <xhtml:ul id="the-list">
                 <xsl:for-each select="$names">
@@ -67,19 +79,17 @@
             </xhtml:ul>
         </xhtml:nav> 
         <xhtml:script>
-            window.addEventListener("load", () => {
             var filter = document.getElementById("the-filter"), // search box
             list = document.querySelectorAll("#the-list li"); // all list items
-            
-            filter.onkeyup = () => {
+            update=function(){
             let search = filter.value.toLowerCase();
-                for (let i of list) {
-                let item = i.innerHTML.toLowerCase();
-                if (item.indexOf(search) == -1) { i.classList.add("hide"); }
-                else { i.classList.remove("hide"); }
-                }
+            for (let i of list) {
+            let item = i.innerHTML.toLowerCase();
+            if (item.indexOf(search) == -1) { i.classList.add("hide"); }
+            else { i.classList.remove("hide"); }
+            }
             };
-            });
+            window.addEventListener("load", () => {filter.onkeyup =update;});
         </xhtml:script>  
     </xsl:template>
     
