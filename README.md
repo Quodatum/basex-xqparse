@@ -8,4 +8,4 @@ Code generated from these EBNFs is used in:
 * https://github.com/Quodatum/xqdoca
 * https://github.com/Quodatum/vscode-basex
 ## Documentation 
-railroad  diagrams for the EBNFs were generated using https://github.com/GuntherRademacher/rr
+Railroad  diagrams for the EBNFs were generated using https://github.com/GuntherRademacher/rr
