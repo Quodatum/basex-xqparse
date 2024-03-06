@@ -11,9 +11,9 @@
 		},
 		{
 			"type": "xslt",
-			"label": "add toc",
+			"label": "Railroad: add toc",
 			"saxonJar": "${config:XSLT.tasks.saxonJar}",
-			"xsltFile": "${command:xslt-xpath.pickXsltFile}",
+			"xsltFile": "${workspaceFolder}/scripts/toc.xsl",
 			"xmlSource": "${command:xslt-xpath.pickXmlSourceFile}",
 			"resultPath": "${workspaceFolder}/xsl-out/result1.html",
 			"allowSyntaxExtensions40": "off",

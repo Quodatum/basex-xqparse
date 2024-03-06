@@ -21,7 +21,7 @@
             </xhtml:main> 
         </xsl:copy>
     </xsl:template>
-    
+
     <!-- hide 1st empty svg (rr bug?) -->
     <xsl:template match="svg:svg[1]" >
         <xsl:copy>
@@ -40,21 +40,24 @@
             nav {
             position: fixed;
             top: 5vh;
-            right:5vh;
-            height:80vh;
+            right:5vh;     
             width:35vh;
-            overflow-y:scroll;
+            border: 1px solid #ffe9e9
             }
-            
+
+            #the-reset { padding: 2px; }
+            #the-reset:hover {  background-color: bisque; }
+
             #the-list {
             list-style: none;
             margin: 0;
-            padding: 0;
+            padding: 10px;
+            height:50vh;
+            overflow-y:scroll;
             }
             
             #the-list li {
-            padding: 2px;
-            border-bottom: 1px solid #ffe9e9;
+            padding: 1px;
             }
             #the-list li:hover { background: #fffed6; }
             #the-list li.hide { display: none; }
@@ -67,7 +70,7 @@
         <xhtml:nav class="section-nav">         
             <xhtml:label for="name">Productions:</xhtml:label>
             <xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5"/>
-            <xhtml:a href="#" title="Clear" 
+            <xhtml:a href="#" title="Reset" id="the-reset"
                      onclick="document.getElementById('the-filter').value='';update();"
                 >X</xhtml:a>
             <xhtml:ul id="the-list">

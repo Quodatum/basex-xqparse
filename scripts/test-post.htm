@@ -1,0 +1,51 @@
+
+	 
+<form method="POST" action="http://localhost:7777/rr/ui" enctype="multipart/form-data" target="_blank">
+<input type="hidden" name="name" value="compilation">
+<input type="hidden" name="task" value="VIEW">
+<input type="hidden" name="options" value="factoring">
+<input type="hidden" name="options" value="eliminaterecursion">
+<input type="hidden" name="options" value="inline">
+<input type="hidden" name="options" value="keep">
+<input type="hidden" name="uri" value="">
+<p>
+ press <input type="submit" value="Show Railroad Diagram"> to automatically send it to "http://localhost:7777/rr/ui" .
+</p>
+<textarea id="gramarEBNF" name="text">
+/* extracted from http://localhost:7777/rr/ui on Wed Mar 6, 2024, 19:19 (UTC)
+ */
+
+Grammar  ::= Production*
+Production
+         ::= NCName '::=' ( Choice | Link )
+NCName   ::= [http://www.w3.org/TR/xml-names/#NT-NCName]
+Choice   ::= SequenceOrDifference ( '|' SequenceOrDifference )*
+SequenceOrDifference
+         ::= (Item ( '-' Item | Item* ))?
+Item     ::= Primary ( '?' | '*' | '+' )*
+Primary  ::= NCName | StringLiteral | CharCode | CharClass | '(' Choice ')'
+StringLiteral
+         ::= '"' [^"]* '"' | "'" [^']* "'"
+          /* ws: explicit */
+CharCode ::= '#x' [0-9a-fA-F]+
+          /* ws: explicit */
+CharClass
+         ::= '[' '^'? ( Char | CharCode | CharRange | CharCodeRange )+ ']'
+          /* ws: explicit */
+Char     ::= [http://www.w3.org/TR/xml#NT-Char]
+CharRange
+         ::= Char '-' ( Char - ']' )
+          /* ws: explicit */
+CharCodeRange
+         ::= CharCode '-' CharCode
+          /* ws: explicit */
+Link     ::= '[' URL ']'
+URL      ::= [^#x5D:/?#]+ '://' [^#x5D#]+ ('#' NCName)?
+          /* ws: explicit */
+Whitespace
+         ::= S | Comment
+S        ::= #x9 | #xA | #xD | #x20
+Comment  ::= '/*' ( [^*] | '*'+ [^*/] )* '*'* '*/'
+          /* ws: explicit */
+</textarea>
+</form>	 
