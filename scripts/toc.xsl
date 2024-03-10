@@ -5,8 +5,7 @@
 <xsl:stylesheet version="3.0" 
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
-                xmlns:svg="http://www.w3.org/2000/svg"> 
-    <xsl:output method="html" version="5"/> 
+                xmlns:svg="http://www.w3.org/2000/svg">  
     <xsl:mode on-no-match="shallow-copy"/>
     <xsl:variable name="names"  select="/xhtml:html/xhtml:body/xhtml:p/xhtml:a/@name/string()=>sort()"  />
     

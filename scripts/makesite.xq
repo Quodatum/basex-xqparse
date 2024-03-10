@@ -1,31 +1,19 @@
-(:~ $rr-web :)
+(:~ generate site :)
+import module namespace qform = 'urn:quodatum:http.form' at 'postutil.xqm';
+(:~ local RR server :)
 declare variable $rr-server := "http://localhost:7777/rr/ui";
 
-declare function local:railroad($ebnf as xs:string,$server as xs:string,$opts as map(*)?)
-{
-let $defaults:=map{
-        "name":"compilation",
-        "task":"VIEW",
-        "options":("factoring","eliminaterecursion","inline","keep"),
-        "uri":""
-    }  
-let $req:=<http:request method='POST'>
-          <http:multipart media-type='multipart/form-data'>
-            <http:header name='content-disposition' value='form-data; name="text"'/>
-            <http:body media-type='application/octet-stream'/>
-             <http:header name='content-disposition' value='form-data; name="name"'/>
-            <http:body media-type='application/octet-stream'/>
-          </http:multipart>
-         </http:request>
-  let $result:= http:send-request($req,$server,($ebnf,"compilation"))
-  return if($result[1]/@status eq "200")
-         then $result[2]
-         else error(xs:QName("local:railroad"),$result[1]/@message)
+declare variable $base := "../ebnf/"=>file:resolve-path(file:base-dir() );
+declare variable $dest := "../site/"=>file:resolve-path(file:base-dir() );
+
+declare variable $opts:=map{
+ "task":"VIEW",
+ "frame":"diagram",
+ "width":992
 };
-
-
-let $ebnf:=file:read-text("C:\Users\mrwhe\git\quodatum\basex-xqparse\ebnf\BaseX.ebnf")
-let $rr:=local:railroad($ebnf,$rr-server, map{})
-(: let $t:=xslt:transform-text($rr,"toc.xsl")
-return file:write-text("c:\tmp\gg.html",$t) :) 
-return $rr
+for $file in file:list($base,false(),"*.ebnf")
+let $ebnf:=file:read-text(file:resolve-path($file,$base))
+let $rr:=qform:post-form(map:put($opts,"ebnf",$ebnf),$rr-server)
+let $t:=xslt:transform($rr,"toc.xsl")
+let $d:=file:resolve-path($file || ".xhtml",$dest )
+return file:write($d,$t,map{"method":"xhtml"})
