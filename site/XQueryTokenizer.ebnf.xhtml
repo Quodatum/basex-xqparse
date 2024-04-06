@@ -12,16 +12,15 @@
             }
             
             nav {
-            position: fixed;
-            top: 5vh;
-            right:5vh;     
-            width:35vh;
-            border: 1px solid #ffe9e9
+            top: 8vh;  
+            width:100%;
+            border: 1px solid #ffe9e9;
+            background-color: #fffed6; 
             }
-
+            
             #the-reset { padding: 2px; }
             #the-reset:hover {  background-color: bisque; }
-
+            
             #the-list {
             list-style: none;
             margin: 0;
@@ -35,6 +34,19 @@
             }
             #the-list li:hover { background: #fffed6; }
             #the-list li.hide { display: none; }
+            
+            header{
+            height: 20px;
+            padding: 0px;
+            background-color: #fffed6; 
+            z-index: 99;
+            position: sticky;
+            top: 0;
+            }
+            
+            a{
+            scroll-margin-top: 2rem;   
+            }
             
     ::-moz-selection
     {
@@ -90,7 +102,7 @@
     {
       font:12px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     }
-  </style><svg xmlns="http://www.w3.org/2000/svg" display="none">
+  </style><svg xmlns="http://www.w3.org/2000/svg">
          
          <defs>
             
@@ -124,10 +136,99 @@
             </defs></svg></head>
    
    <body>
-      <xhtml:main xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+      <xhtml:header xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema" style="display:flex;justify-content:space-evenly;">
+         <xhtml:div>XQueryTokenizer.ebnf</xhtml:div>
+         <xhtml:div>
+            <xhtml:details id="the-details">
+               <xhtml:summary>Find</xhtml:summary>
+               <xhtml:div>
+                  <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-details').removeAttribute('open');update();">X</xhtml:a><xhtml:ul id="the-list">
+                        <xhtml:li><xhtml:a href="#Annotation">Annotation</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AposAttr">AposAttr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AposAttrContentChar">AposAttrContentChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AposChar">AposChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AposString">AposString</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AttrTest">AttrTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BracedURILiteral">BracedURILiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CData">CData</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CDataSectionContents">CDataSectionContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Char">Char</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CharRef">CharRef</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Comment">Comment</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CommentContents">CommentContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CommentDoc">CommentDoc</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DecimalLiteral">DecimalLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DelimitingChar">DelimitingChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Digits">Digits</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirCommentContents">DirCommentContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirPIContents">DirPIContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DocCommentContents">DocCommentContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DocTag">DocTag</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DoubleLiteral">DoubleLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EOF">EOF</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EQName">EQName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EQName">EQName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ElementContentChar">ElementContentChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EndTag">EndTag</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionName">FunctionName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#IntegerLiteral">IntegerLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#LocalPart">LocalPart</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ModuleDecl">ModuleDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Name">Name</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NameChar">NameChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NameStartChar">NameStartChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NonNCNameChar">NonNCNameChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Operator">Operator</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OptionDecl">OptionDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PI">PI</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PITarget">PITarget</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Pragma">Pragma</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PragmaContents">PragmaContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PredefinedEntityRef">PredefinedEntityRef</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PrefixedName">PrefixedName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QName">QName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuotAttr">QuotAttr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuotAttrContentChar">QuotAttrContentChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuotChar">QuotChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuotString">QuotString</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#S">S</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StartTag">StartTag</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Tag">Tag</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TagContent">TagContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#URILiteral">URILiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#URIQualifiedName">URIQualifiedName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UnprefixedName">UnprefixedName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Variable">Variable</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Whitespace">Whitespace</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Wildcard">Wildcard</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#XMLComment">XMLComment</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#_EQName">_EQName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#start">start</xhtml:a></xhtml:li>
+                     </xhtml:ul>
+                  </xhtml:nav><xhtml:script>
+            var filter = document.getElementById("the-filter"), // search box
+            list = document.querySelectorAll("#the-list li"); // all list items
+            update=function(){
+            let search = filter.value.toLowerCase();
+            for (let i of list) {
+            let item = i.innerHTML.toLowerCase();
+            if (item.indexOf(search) == -1) { i.classList.add("hide"); }
+            else { i.classList.remove("hide"); }
+            }
+            };
+            window.addEventListener("load", () =&gt; {filter.onkeyup =update;});
+        </xhtml:script></xhtml:div>
+            </xhtml:details>
+         </xhtml:div>
+      </xhtml:header>
+      <xhtml:main xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema">
          <xhtml:div>
             
-            <p style="font-size: 14px; font-weight:bold"><a name="start">start:</a></p><svg xmlns="http://www.w3.org/2000/svg" display="none">
+            <p style="font-size: 14px; font-weight:bold"><a name="start">start:</a></p><svg xmlns="http://www.w3.org/2000/svg" width="207" height="1533">
                
                <polygon points="9 17 1 13 1 21"></polygon>
                
@@ -5543,7 +5644,7 @@
                         <nobr class="signature">... generated by <a name="Railroad-Diagram-Generator" class="signature" title="https://www.bottlecaps.de/rr/ui" href="https://www.bottlecaps.de/rr/ui" target="_blank">RR - Railroad Diagram Generator</a></nobr>
                         </td>
                      
-                     <td><a name="Railroad-Diagram-Generator" title="https://www.bottlecaps.de/rr/ui" href="https://www.bottlecaps.de/rr/ui" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" display="none">
+                     <td><a name="Railroad-Diagram-Generator" title="https://www.bottlecaps.de/rr/ui" href="https://www.bottlecaps.de/rr/ui" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                               
                               <g transform="scale(0.178)">
                                  
@@ -5563,85 +5664,6 @@
                   </table>
                </p>
             </xhtml:div>
-         <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-filter').value='';update();">X</xhtml:a><xhtml:ul id="the-list">
-               <xhtml:li><xhtml:a href="#Annotation">Annotation</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AposAttr">AposAttr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AposAttrContentChar">AposAttrContentChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AposChar">AposChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AposString">AposString</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AttrTest">AttrTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BracedURILiteral">BracedURILiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CData">CData</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CDataSectionContents">CDataSectionContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Char">Char</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CharRef">CharRef</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Comment">Comment</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CommentContents">CommentContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CommentDoc">CommentDoc</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DecimalLiteral">DecimalLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DelimitingChar">DelimitingChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Digits">Digits</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirCommentContents">DirCommentContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirPIContents">DirPIContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DocCommentContents">DocCommentContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DocTag">DocTag</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DoubleLiteral">DoubleLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EOF">EOF</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EQName">EQName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EQName">EQName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ElementContentChar">ElementContentChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EndTag">EndTag</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionName">FunctionName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#IntegerLiteral">IntegerLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#LocalPart">LocalPart</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ModuleDecl">ModuleDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Name">Name</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NameChar">NameChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NameStartChar">NameStartChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NonNCNameChar">NonNCNameChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Operator">Operator</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OptionDecl">OptionDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PI">PI</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PITarget">PITarget</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Pragma">Pragma</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PragmaContents">PragmaContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PredefinedEntityRef">PredefinedEntityRef</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PrefixedName">PrefixedName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QName">QName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuotAttr">QuotAttr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuotAttrContentChar">QuotAttrContentChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuotChar">QuotChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuotString">QuotString</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#S">S</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StartTag">StartTag</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Tag">Tag</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TagContent">TagContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#URILiteral">URILiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#URIQualifiedName">URIQualifiedName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UnprefixedName">UnprefixedName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Variable">Variable</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Whitespace">Whitespace</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Wildcard">Wildcard</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#XMLComment">XMLComment</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#_EQName">_EQName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#start">start</xhtml:a></xhtml:li>
-            </xhtml:ul>
-         </xhtml:nav><xhtml:script>
-            var filter = document.getElementById("the-filter"), // search box
-            list = document.querySelectorAll("#the-list li"); // all list items
-            update=function(){
-            let search = filter.value.toLowerCase();
-            for (let i of list) {
-            let item = i.innerHTML.toLowerCase();
-            if (item.indexOf(search) == -1) { i.classList.add("hide"); }
-            else { i.classList.remove("hide"); }
-            }
-            };
-            window.addEventListener("load", () =&gt; {filter.onkeyup =update;});
-        </xhtml:script></xhtml:main>
+      </xhtml:main>
    </body>
    </html>

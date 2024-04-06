@@ -12,16 +12,15 @@
             }
             
             nav {
-            position: fixed;
-            top: 5vh;
-            right:5vh;     
-            width:35vh;
-            border: 1px solid #ffe9e9
+            top: 8vh;  
+            width:100%;
+            border: 1px solid #ffe9e9;
+            background-color: #fffed6; 
             }
-
+            
             #the-reset { padding: 2px; }
             #the-reset:hover {  background-color: bisque; }
-
+            
             #the-list {
             list-style: none;
             margin: 0;
@@ -35,6 +34,19 @@
             }
             #the-list li:hover { background: #fffed6; }
             #the-list li.hide { display: none; }
+            
+            header{
+            height: 20px;
+            padding: 0px;
+            background-color: #fffed6; 
+            z-index: 99;
+            position: sticky;
+            top: 0;
+            }
+            
+            a{
+            scroll-margin-top: 2rem;   
+            }
             
     ::-moz-selection
     {
@@ -90,7 +102,7 @@
     {
       font:12px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     }
-  </style><svg xmlns="http://www.w3.org/2000/svg" display="none">
+  </style><svg xmlns="http://www.w3.org/2000/svg">
          
          <defs>
             
@@ -124,10 +136,340 @@
             </defs></svg></head>
    
    <body>
-      <xhtml:main xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+      <xhtml:header xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema" style="display:flex;justify-content:space-evenly;">
+         <xhtml:div>BaseX.ebnf</xhtml:div>
+         <xhtml:div>
+            <xhtml:details id="the-details">
+               <xhtml:summary>Find</xhtml:summary>
+               <xhtml:div>
+                  <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-details').removeAttribute('open');update();">X</xhtml:a><xhtml:ul id="the-list">
+                        <xhtml:li><xhtml:a href="#AbbrevForwardStep">AbbrevForwardStep</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AdditiveExpr">AdditiveExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AllowingEmpty">AllowingEmpty</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AndExpr">AndExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AnnotatedDecl">AnnotatedDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Annotation">Annotation</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AnyArrayTest">AnyArrayTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AnyFunctionTest">AnyFunctionTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AnyKindTest">AnyKindTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AnyMapTest">AnyMapTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AposAttrContentChar">AposAttrContentChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AposAttrValueContent">AposAttrValueContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Argument">Argument</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ArgumentList">ArgumentList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ArrayConstructor">ArrayConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ArrayTest">ArrayTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ArrowExpr">ArrowExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ArrowFunctionSpecifier">ArrowFunctionSpecifier</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AtomicOrUnionType">AtomicOrUnionType</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AttribNameOrWildcard">AttribNameOrWildcard</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AttributeDeclaration">AttributeDeclaration</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AttributeName">AttributeName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AttributeTest">AttributeTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#AxisStep">AxisStep</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BaseURIDecl">BaseURIDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BasexIfExpr">BasexIfExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BasexUpdate1Expr">BasexUpdate1Expr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BasexUpdateExpr">BasexUpdateExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BoundarySpaceDecl">BoundarySpaceDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#BracedURILiteral">BracedURILiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CDataSection">CDataSection</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CDataSectionContents">CDataSectionContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CaseClause">CaseClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CastExpr">CastExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CastableExpr">CastableExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CatchClause">CatchClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CatchErrorList">CatchErrorList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Char">Char</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CharRef">CharRef</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Comment">Comment</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CommentContents">CommentContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CommentTest">CommentTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CommonContent">CommonContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompAttrConstructor">CompAttrConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompCommentConstructor">CompCommentConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompDocConstructor">CompDocConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompElemConstructor">CompElemConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompNamespaceConstructor">CompNamespaceConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompPIConstructor">CompPIConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CompTextConstructor">CompTextConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ComparisonExpr">ComparisonExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ComputedConstructor">ComputedConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ConstructionDecl">ConstructionDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Constructor">Constructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ContextItemDecl">ContextItemDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CopyModifyExpr">CopyModifyExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CopyModifySpec">CopyModifySpec</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CopyNamespacesDecl">CopyNamespacesDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CountClause">CountClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CurlyArrayConstructor">CurlyArrayConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#CurrentItem">CurrentItem</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DFPropertyName">DFPropertyName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DecimalFormatDecl">DecimalFormatDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DecimalLiteral">DecimalLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DefaultCollationDecl">DefaultCollationDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DefaultNamespaceDecl">DefaultNamespaceDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DeleteExpr">DeleteExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DelimitingChar">DelimitingChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Digits">Digits</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirAttributeList">DirAttributeList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirAttributeValue">DirAttributeValue</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirCommentConstructor">DirCommentConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirCommentContents">DirCommentContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirElemConstructor">DirElemConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirElemContent">DirElemContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirPIConstructor">DirPIConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirPIContents">DirPIContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DirectConstructor">DirectConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DocumentTest">DocumentTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#DoubleLiteral">DoubleLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EOF">EOF</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EQName">EQName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ElementContentChar">ElementContentChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ElementDeclaration">ElementDeclaration</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ElementName">ElementName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ElementNameOrWildcard">ElementNameOrWildcard</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ElementTest">ElementTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EmptyOrderDecl">EmptyOrderDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EnclosedContentExpr">EnclosedContentExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EnclosedExpr">EnclosedExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#EnclosedTryTargetExpr">EnclosedTryTargetExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Expr">Expr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ExprSingle">ExprSingle</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ExtensionExpr">ExtensionExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FLWORExpr">FLWORExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTAnd">FTAnd</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTAnyallOption">FTAnyallOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTBigUnit">FTBigUnit</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTCaseOption">FTCaseOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTContainsExpr">FTContainsExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTContent">FTContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTDiacriticsOption">FTDiacriticsOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTDistance">FTDistance</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTExtensionOption">FTExtensionOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTExtensionSelection">FTExtensionSelection</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTIgnoreOption">FTIgnoreOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTLanguageOption">FTLanguageOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTLiteralRange">FTLiteralRange</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTMatchOption">FTMatchOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTMatchOptions">FTMatchOptions</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTMildNot">FTMildNot</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTOptionDecl">FTOptionDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTOr">FTOr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTPosFilter">FTPosFilter</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTPrimary">FTPrimary</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTPrimaryWithOptions">FTPrimaryWithOptions</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTRange">FTRange</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTScope">FTScope</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTScoreVar">FTScoreVar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTSelection">FTSelection</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTStemOption">FTStemOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTStopWordOption">FTStopWordOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTStopWords">FTStopWords</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTStopWordsInclExcl">FTStopWordsInclExcl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTThesaurusID">FTThesaurusID</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTThesaurusOption">FTThesaurusOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTTimes">FTTimes</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTUnaryNot">FTUnaryNot</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTUnit">FTUnit</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTWeight">FTWeight</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTWildCardOption">FTWildCardOption</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTWindow">FTWindow</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTWords">FTWords</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FTWordsValue">FTWordsValue</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ForBinding">ForBinding</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ForClause">ForClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ForwardAxis">ForwardAxis</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ForwardStep">ForwardStep</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionBody">FunctionBody</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionCall">FunctionCall</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionDecl">FunctionDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionEQName">FunctionEQName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionItemExpr">FunctionItemExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionName">FunctionName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#FunctionTest">FunctionTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#GeneralComp">GeneralComp</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#GroupByClause">GroupByClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#GroupingSpec">GroupingSpec</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#GroupingSpecList">GroupingSpecList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#GroupingVariable">GroupingVariable</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#IfExpr">IfExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Import">Import</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#InheritMode">InheritMode</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#InitialClause">InitialClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#InlineFunctionExpr">InlineFunctionExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#InsertExpr">InsertExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#InsertExprTargetChoice">InsertExprTargetChoice</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#InstanceofExpr">InstanceofExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#IntegerLiteral">IntegerLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#IntermediateClause">IntermediateClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#IntersectExceptExpr">IntersectExceptExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ItemType">ItemType</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#KeySpecifier">KeySpecifier</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#KindTest">KindTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#LetBinding">LetBinding</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#LetClause">LetClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#LibraryModule">LibraryModule</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Literal">Literal</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#LocalPart">LocalPart</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Lookup">Lookup</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MainModule">MainModule</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MapConstructor">MapConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MapConstructorEntry">MapConstructorEntry</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MapKeyExpr">MapKeyExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MapTest">MapTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MapValueExpr">MapValueExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Module">Module</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ModuleDecl">ModuleDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ModuleImport">ModuleImport</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#MultiplicativeExpr">MultiplicativeExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Name">Name</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NameChar">NameChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NameStartChar">NameStartChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NameTest">NameTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NamedFunctionRef">NamedFunctionRef</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NamespaceDecl">NamespaceDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NamespaceNodeTest">NamespaceNodeTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NewNameExpr">NewNameExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NextItem">NextItem</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NodeComp">NodeComp</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NodeTest">NodeTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NonNCNameChar">NonNCNameChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#NumericLiteral">NumericLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OccurrenceIndicator">OccurrenceIndicator</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OptionDecl">OptionDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrExpr">OrExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrderByClause">OrderByClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrderModifier">OrderModifier</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrderSpec">OrderSpec</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrderSpecList">OrderSpecList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrderedExpr">OrderedExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OrderingModeDecl">OrderingModeDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#OtherwiseExpr">OtherwiseExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PITarget">PITarget</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PITest">PITest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Param">Param</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ParamList">ParamList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ParenthesizedExpr">ParenthesizedExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ParenthesizedItemType">ParenthesizedItemType</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PathExpr">PathExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PositionalVar">PositionalVar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PostfixExpr">PostfixExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Pragma">Pragma</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PragmaContents">PragmaContents</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PredefinedEntityRef">PredefinedEntityRef</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Predicate">Predicate</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PredicateList">PredicateList</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PrefixExpr">PrefixExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PrefixedName">PrefixedName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PreserveMode">PreserveMode</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PreviousItem">PreviousItem</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#PrimaryExpr">PrimaryExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Prolog">Prolog</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QName">QName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QName">QName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuantifiedExpr">QuantifiedExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuantifiedVarDecl">QuantifiedVarDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QueryBody">QueryBody</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuotAttrContentChar">QuotAttrContentChar</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#QuotAttrValueContent">QuotAttrValueContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#RangeExpr">RangeExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#RelativePathExpr">RelativePathExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#RenameExpr">RenameExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ReplaceExpr">ReplaceExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ReturnClause">ReturnClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#RevalidationDecl">RevalidationDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ReverseAxis">ReverseAxis</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ReverseStep">ReverseStep</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#S">S</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SchemaAttributeTest">SchemaAttributeTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SchemaElementTest">SchemaElementTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SchemaImport">SchemaImport</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SchemaPrefix">SchemaPrefix</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SequenceType">SequenceType</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SequenceTypeUnion">SequenceTypeUnion</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Setter">Setter</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SimpleMapExpr">SimpleMapExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SimpleTypeName">SimpleTypeName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SingleType">SingleType</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SlidingWindowClause">SlidingWindowClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SourceExpr">SourceExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SquareArrayConstructor">SquareArrayConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StepExpr">StepExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StringConcatExpr">StringConcatExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StringConstructor">StringConstructor</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StringConstructorChars">StringConstructorChars</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StringConstructorContent">StringConstructorContent</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StringConstructorInterpolation">StringConstructorInterpolation</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#StringLiteral">StringLiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SwitchCaseClause">SwitchCaseClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SwitchCaseOperand">SwitchCaseOperand</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#SwitchExpr">SwitchExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TargetExpr">TargetExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TextTest">TextTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TransformWithExpr">TransformWithExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TreatExpr">TreatExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TryCatchExpr">TryCatchExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TryClause">TryClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TumblingWindowClause">TumblingWindowClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TypeDeclaration">TypeDeclaration</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TypeName">TypeName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TypedArrayTest">TypedArrayTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TypedFunctionTest">TypedFunctionTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TypedMapTest">TypedMapTest</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#TypeswitchExpr">TypeswitchExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#URIExpr">URIExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#URILiteral">URILiteral</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#URIQualifiedName">URIQualifiedName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UnaryExpr">UnaryExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UnaryLookup">UnaryLookup</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UnionExpr">UnionExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UnorderedExpr">UnorderedExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UnprefixedName">UnprefixedName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#UpdatingFunctionCall">UpdatingFunctionCall</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ValidateExpr">ValidateExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ValidationMode">ValidationMode</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ValueComp">ValueComp</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#ValueExpr">ValueExpr</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#VarDecl">VarDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#VarDefaultValue">VarDefaultValue</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#VarName">VarName</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#VarRef">VarRef</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#VarValue">VarValue</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#VersionDecl">VersionDecl</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#WhereClause">WhereClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Whitespace">Whitespace</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#Wildcard">Wildcard</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#WindowClause">WindowClause</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#WindowEndCondition">WindowEndCondition</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#WindowStartCondition">WindowStartCondition</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#WindowVars">WindowVars</xhtml:a></xhtml:li>
+                        <xhtml:li><xhtml:a href="#XQuery">XQuery</xhtml:a></xhtml:li>
+                     </xhtml:ul>
+                  </xhtml:nav><xhtml:script>
+            var filter = document.getElementById("the-filter"), // search box
+            list = document.querySelectorAll("#the-list li"); // all list items
+            update=function(){
+            let search = filter.value.toLowerCase();
+            for (let i of list) {
+            let item = i.innerHTML.toLowerCase();
+            if (item.indexOf(search) == -1) { i.classList.add("hide"); }
+            else { i.classList.remove("hide"); }
+            }
+            };
+            window.addEventListener("load", () =&gt; {filter.onkeyup =update;});
+        </xhtml:script></xhtml:div>
+            </xhtml:details>
+         </xhtml:div>
+      </xhtml:header>
+      <xhtml:main xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema">
          <xhtml:div>
             
-            <p style="font-size: 14px; font-weight:bold"><a name="XQuery">XQuery:</a></p><svg xmlns="http://www.w3.org/2000/svg" display="none">
+            <p style="font-size: 14px; font-weight:bold"><a name="XQuery">XQuery:</a></p><svg xmlns="http://www.w3.org/2000/svg" width="187" height="37">
                
                <polygon points="9 17 1 13 1 21"></polygon>
                
@@ -16023,7 +16365,7 @@
                         <nobr class="signature">... generated by <a name="Railroad-Diagram-Generator" class="signature" title="https://www.bottlecaps.de/rr/ui" href="https://www.bottlecaps.de/rr/ui" target="_blank">RR - Railroad Diagram Generator</a></nobr>
                         </td>
                      
-                     <td><a name="Railroad-Diagram-Generator" title="https://www.bottlecaps.de/rr/ui" href="https://www.bottlecaps.de/rr/ui" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" display="none">
+                     <td><a name="Railroad-Diagram-Generator" title="https://www.bottlecaps.de/rr/ui" href="https://www.bottlecaps.de/rr/ui" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                               
                               <g transform="scale(0.178)">
                                  
@@ -16043,326 +16385,6 @@
                   </table>
                </p>
             </xhtml:div>
-         <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-filter').value='';update();">X</xhtml:a><xhtml:ul id="the-list">
-               <xhtml:li><xhtml:a href="#AbbrevForwardStep">AbbrevForwardStep</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AdditiveExpr">AdditiveExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AllowingEmpty">AllowingEmpty</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AndExpr">AndExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AnnotatedDecl">AnnotatedDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Annotation">Annotation</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AnyArrayTest">AnyArrayTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AnyFunctionTest">AnyFunctionTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AnyKindTest">AnyKindTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AnyMapTest">AnyMapTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AposAttrContentChar">AposAttrContentChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AposAttrValueContent">AposAttrValueContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Argument">Argument</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ArgumentList">ArgumentList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ArrayConstructor">ArrayConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ArrayTest">ArrayTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ArrowExpr">ArrowExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ArrowFunctionSpecifier">ArrowFunctionSpecifier</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AtomicOrUnionType">AtomicOrUnionType</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AttribNameOrWildcard">AttribNameOrWildcard</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AttributeDeclaration">AttributeDeclaration</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AttributeName">AttributeName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AttributeTest">AttributeTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#AxisStep">AxisStep</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BaseURIDecl">BaseURIDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BasexIfExpr">BasexIfExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BasexUpdate1Expr">BasexUpdate1Expr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BasexUpdateExpr">BasexUpdateExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BoundarySpaceDecl">BoundarySpaceDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#BracedURILiteral">BracedURILiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CDataSection">CDataSection</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CDataSectionContents">CDataSectionContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CaseClause">CaseClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CastExpr">CastExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CastableExpr">CastableExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CatchClause">CatchClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CatchErrorList">CatchErrorList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Char">Char</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CharRef">CharRef</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Comment">Comment</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CommentContents">CommentContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CommentTest">CommentTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CommonContent">CommonContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompAttrConstructor">CompAttrConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompCommentConstructor">CompCommentConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompDocConstructor">CompDocConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompElemConstructor">CompElemConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompNamespaceConstructor">CompNamespaceConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompPIConstructor">CompPIConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CompTextConstructor">CompTextConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ComparisonExpr">ComparisonExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ComputedConstructor">ComputedConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ConstructionDecl">ConstructionDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Constructor">Constructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ContextItemDecl">ContextItemDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CopyModifyExpr">CopyModifyExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CopyModifySpec">CopyModifySpec</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CopyNamespacesDecl">CopyNamespacesDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CountClause">CountClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CurlyArrayConstructor">CurlyArrayConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#CurrentItem">CurrentItem</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DFPropertyName">DFPropertyName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DecimalFormatDecl">DecimalFormatDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DecimalLiteral">DecimalLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DefaultCollationDecl">DefaultCollationDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DefaultNamespaceDecl">DefaultNamespaceDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DeleteExpr">DeleteExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DelimitingChar">DelimitingChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Digits">Digits</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirAttributeList">DirAttributeList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirAttributeValue">DirAttributeValue</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirCommentConstructor">DirCommentConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirCommentContents">DirCommentContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirElemConstructor">DirElemConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirElemContent">DirElemContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirPIConstructor">DirPIConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirPIContents">DirPIContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DirectConstructor">DirectConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DocumentTest">DocumentTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#DoubleLiteral">DoubleLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EOF">EOF</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EQName">EQName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ElementContentChar">ElementContentChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ElementDeclaration">ElementDeclaration</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ElementName">ElementName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ElementNameOrWildcard">ElementNameOrWildcard</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ElementTest">ElementTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EmptyOrderDecl">EmptyOrderDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EnclosedContentExpr">EnclosedContentExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EnclosedExpr">EnclosedExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#EnclosedTryTargetExpr">EnclosedTryTargetExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Expr">Expr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ExprSingle">ExprSingle</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ExtensionExpr">ExtensionExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FLWORExpr">FLWORExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTAnd">FTAnd</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTAnyallOption">FTAnyallOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTBigUnit">FTBigUnit</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTCaseOption">FTCaseOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTContainsExpr">FTContainsExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTContent">FTContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTDiacriticsOption">FTDiacriticsOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTDistance">FTDistance</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTExtensionOption">FTExtensionOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTExtensionSelection">FTExtensionSelection</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTIgnoreOption">FTIgnoreOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTLanguageOption">FTLanguageOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTLiteralRange">FTLiteralRange</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTMatchOption">FTMatchOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTMatchOptions">FTMatchOptions</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTMildNot">FTMildNot</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTOptionDecl">FTOptionDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTOr">FTOr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTPosFilter">FTPosFilter</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTPrimary">FTPrimary</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTPrimaryWithOptions">FTPrimaryWithOptions</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTRange">FTRange</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTScope">FTScope</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTScoreVar">FTScoreVar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTSelection">FTSelection</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTStemOption">FTStemOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTStopWordOption">FTStopWordOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTStopWords">FTStopWords</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTStopWordsInclExcl">FTStopWordsInclExcl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTThesaurusID">FTThesaurusID</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTThesaurusOption">FTThesaurusOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTTimes">FTTimes</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTUnaryNot">FTUnaryNot</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTUnit">FTUnit</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTWeight">FTWeight</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTWildCardOption">FTWildCardOption</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTWindow">FTWindow</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTWords">FTWords</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FTWordsValue">FTWordsValue</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ForBinding">ForBinding</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ForClause">ForClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ForwardAxis">ForwardAxis</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ForwardStep">ForwardStep</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionBody">FunctionBody</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionCall">FunctionCall</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionDecl">FunctionDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionEQName">FunctionEQName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionItemExpr">FunctionItemExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionName">FunctionName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#FunctionTest">FunctionTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#GeneralComp">GeneralComp</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#GroupByClause">GroupByClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#GroupingSpec">GroupingSpec</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#GroupingSpecList">GroupingSpecList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#GroupingVariable">GroupingVariable</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#IfExpr">IfExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Import">Import</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#InheritMode">InheritMode</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#InitialClause">InitialClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#InlineFunctionExpr">InlineFunctionExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#InsertExpr">InsertExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#InsertExprTargetChoice">InsertExprTargetChoice</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#InstanceofExpr">InstanceofExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#IntegerLiteral">IntegerLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#IntermediateClause">IntermediateClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#IntersectExceptExpr">IntersectExceptExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ItemType">ItemType</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#KeySpecifier">KeySpecifier</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#KindTest">KindTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#LetBinding">LetBinding</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#LetClause">LetClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#LibraryModule">LibraryModule</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Literal">Literal</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#LocalPart">LocalPart</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Lookup">Lookup</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MainModule">MainModule</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MapConstructor">MapConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MapConstructorEntry">MapConstructorEntry</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MapKeyExpr">MapKeyExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MapTest">MapTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MapValueExpr">MapValueExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Module">Module</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ModuleDecl">ModuleDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ModuleImport">ModuleImport</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#MultiplicativeExpr">MultiplicativeExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NCName">NCName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Name">Name</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NameChar">NameChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NameStartChar">NameStartChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NameTest">NameTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NamedFunctionRef">NamedFunctionRef</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NamespaceDecl">NamespaceDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NamespaceNodeTest">NamespaceNodeTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NewNameExpr">NewNameExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NextItem">NextItem</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NodeComp">NodeComp</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NodeTest">NodeTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NonNCNameChar">NonNCNameChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#NumericLiteral">NumericLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OccurrenceIndicator">OccurrenceIndicator</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OptionDecl">OptionDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrExpr">OrExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrderByClause">OrderByClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrderModifier">OrderModifier</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrderSpec">OrderSpec</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrderSpecList">OrderSpecList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrderedExpr">OrderedExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OrderingModeDecl">OrderingModeDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#OtherwiseExpr">OtherwiseExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PITarget">PITarget</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PITest">PITest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Param">Param</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ParamList">ParamList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ParenthesizedExpr">ParenthesizedExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ParenthesizedItemType">ParenthesizedItemType</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PathExpr">PathExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PositionalVar">PositionalVar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PostfixExpr">PostfixExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Pragma">Pragma</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PragmaContents">PragmaContents</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PredefinedEntityRef">PredefinedEntityRef</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Predicate">Predicate</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PredicateList">PredicateList</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Prefix">Prefix</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PrefixExpr">PrefixExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PrefixedName">PrefixedName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PreserveMode">PreserveMode</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PreviousItem">PreviousItem</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#PrimaryExpr">PrimaryExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Prolog">Prolog</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QName">QName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QName">QName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuantifiedExpr">QuantifiedExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuantifiedVarDecl">QuantifiedVarDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QueryBody">QueryBody</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuotAttrContentChar">QuotAttrContentChar</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#QuotAttrValueContent">QuotAttrValueContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#RangeExpr">RangeExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#RelativePathExpr">RelativePathExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#RenameExpr">RenameExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ReplaceExpr">ReplaceExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ReturnClause">ReturnClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#RevalidationDecl">RevalidationDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ReverseAxis">ReverseAxis</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ReverseStep">ReverseStep</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#S">S</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SchemaAttributeTest">SchemaAttributeTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SchemaElementTest">SchemaElementTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SchemaImport">SchemaImport</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SchemaPrefix">SchemaPrefix</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SequenceType">SequenceType</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SequenceTypeUnion">SequenceTypeUnion</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Setter">Setter</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SimpleMapExpr">SimpleMapExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SimpleTypeName">SimpleTypeName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SingleType">SingleType</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SlidingWindowClause">SlidingWindowClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SourceExpr">SourceExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SquareArrayConstructor">SquareArrayConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StepExpr">StepExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StringConcatExpr">StringConcatExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StringConstructor">StringConstructor</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StringConstructorChars">StringConstructorChars</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StringConstructorContent">StringConstructorContent</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StringConstructorInterpolation">StringConstructorInterpolation</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#StringLiteral">StringLiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SwitchCaseClause">SwitchCaseClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SwitchCaseOperand">SwitchCaseOperand</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#SwitchExpr">SwitchExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TargetExpr">TargetExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TextTest">TextTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TransformWithExpr">TransformWithExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TreatExpr">TreatExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TryCatchExpr">TryCatchExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TryClause">TryClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TumblingWindowClause">TumblingWindowClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TypeDeclaration">TypeDeclaration</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TypeName">TypeName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TypedArrayTest">TypedArrayTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TypedFunctionTest">TypedFunctionTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TypedMapTest">TypedMapTest</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#TypeswitchExpr">TypeswitchExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#URIExpr">URIExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#URILiteral">URILiteral</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#URIQualifiedName">URIQualifiedName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UnaryExpr">UnaryExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UnaryLookup">UnaryLookup</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UnionExpr">UnionExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UnorderedExpr">UnorderedExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UnprefixedName">UnprefixedName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#UpdatingFunctionCall">UpdatingFunctionCall</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ValidateExpr">ValidateExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ValidationMode">ValidationMode</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ValueComp">ValueComp</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#ValueExpr">ValueExpr</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#VarDecl">VarDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#VarDefaultValue">VarDefaultValue</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#VarName">VarName</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#VarRef">VarRef</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#VarValue">VarValue</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#VersionDecl">VersionDecl</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#WhereClause">WhereClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Whitespace">Whitespace</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#Wildcard">Wildcard</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#WindowClause">WindowClause</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#WindowEndCondition">WindowEndCondition</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#WindowStartCondition">WindowStartCondition</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#WindowVars">WindowVars</xhtml:a></xhtml:li>
-               <xhtml:li><xhtml:a href="#XQuery">XQuery</xhtml:a></xhtml:li>
-            </xhtml:ul>
-         </xhtml:nav><xhtml:script>
-            var filter = document.getElementById("the-filter"), // search box
-            list = document.querySelectorAll("#the-list li"); // all list items
-            update=function(){
-            let search = filter.value.toLowerCase();
-            for (let i of list) {
-            let item = i.innerHTML.toLowerCase();
-            if (item.indexOf(search) == -1) { i.classList.add("hide"); }
-            else { i.classList.remove("hide"); }
-            }
-            };
-            window.addEventListener("load", () =&gt; {filter.onkeyup =update;});
-        </xhtml:script></xhtml:main>
+      </xhtml:main>
    </body>
    </html>
