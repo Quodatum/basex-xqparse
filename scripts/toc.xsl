@@ -11,7 +11,6 @@
     <xsl:param name="title" as="xs:string" select="'(untitled)'"/>
     <xsl:variable name="names"  select="/xhtml:html/xhtml:body/xhtml:p/xhtml:a/@name/string()=>sort()"  />
     
-    
     <xsl:template match="xhtml:body" >
         <xsl:copy>
             <xhtml:header style="display:flex;justify-content:space-evenly;">
@@ -23,6 +22,14 @@
                             <xsl:call-template name="toc"/>
                         </xhtml:div>
                     </xhtml:details>
+                    <xhtml:script>
+                        var details = document.getElementById("the-details"), // form
+                        document.addEventListener('click', function(e){
+                        if(!details.contains(e.target)){
+                        details.removeAttribute('open')
+                        }
+                        })
+                    </xhtml:script>  
                 </xhtml:div>
             </xhtml:header>
             <xhtml:main>
@@ -33,7 +40,11 @@
         </xsl:copy>
     </xsl:template>
     
-    
+    <xsl:template match="xhtml:head/xhtml:meta[last()]">
+        <xsl:copy-of select="."/>
+        <xhtml:meta name="date" content="{ current-dateTime() }"/>
+    </xsl:template>
+
     <!-- add extra styles -->
     <xsl:template match="xhtml:head/xhtml:style[@type='text/css'][1]" >
         <xsl:copy>

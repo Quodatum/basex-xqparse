@@ -5,6 +5,7 @@
       
       
       <meta name="generator" content="Railroad Diagram Generator 2.1" />
+      <xhtml:meta xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="date" content="2024-04-06T22:15:17.310879+01:00" />
       
       <style>
             html {
@@ -139,10 +140,10 @@
       <xhtml:header xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema" style="display:flex;justify-content:space-evenly;">
          <xhtml:div>BaseX.ebnf</xhtml:div>
          <xhtml:div>
-            <xhtml:details>
+            <xhtml:details id="the-details">
                <xhtml:summary>Find</xhtml:summary>
                <xhtml:div>
-                  <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-filter').value='';update();">X</xhtml:a><xhtml:ul id="the-list">
+                  <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-details').removeAttribute('open');update();">X</xhtml:a><xhtml:ul id="the-list">
                         <xhtml:li><xhtml:a href="#AbbrevForwardStep">AbbrevForwardStep</xhtml:a></xhtml:li>
                         <xhtml:li><xhtml:a href="#AdditiveExpr">AdditiveExpr</xhtml:a></xhtml:li>
                         <xhtml:li><xhtml:a href="#AllowingEmpty">AllowingEmpty</xhtml:a></xhtml:li>
@@ -463,8 +464,14 @@
             };
             window.addEventListener("load", () =&gt; {filter.onkeyup =update;});
         </xhtml:script></xhtml:div>
-            </xhtml:details>
-         </xhtml:div>
+            </xhtml:details><xhtml:script>
+                        var details = document.getElementById("the-details"), // form
+                        document.addEventListener('click', function(e){
+                        if(!details.contains(e.target)){
+                        details.removeAttribute('open')
+                        }
+                        })
+                    </xhtml:script></xhtml:div>
       </xhtml:header>
       <xhtml:main xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema">
          <xhtml:div>

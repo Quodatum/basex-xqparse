@@ -139,10 +139,10 @@
       <xhtml:header xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema" style="display:flex;justify-content:space-evenly;">
          <xhtml:div>XQueryTokenizer.ebnf</xhtml:div>
          <xhtml:div>
-            <xhtml:details id="the-details">
+            <xhtml:details>
                <xhtml:summary>Find</xhtml:summary>
                <xhtml:div>
-                  <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-details').removeAttribute('open');update();">X</xhtml:a><xhtml:ul id="the-list">
+                  <xhtml:nav class="section-nav"><xhtml:label for="name">Productions:</xhtml:label><xhtml:input type="text" id="the-filter" name="name" placeholder="filter..." size="5" /><xhtml:a href="#" title="Reset" id="the-reset" onclick="document.getElementById('the-filter').value='';update();">X</xhtml:a><xhtml:ul id="the-list">
                         <xhtml:li><xhtml:a href="#Annotation">Annotation</xhtml:a></xhtml:li>
                         <xhtml:li><xhtml:a href="#AposAttr">AposAttr</xhtml:a></xhtml:li>
                         <xhtml:li><xhtml:a href="#AposAttrContentChar">AposAttrContentChar</xhtml:a></xhtml:li>
